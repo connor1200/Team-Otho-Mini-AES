@@ -1,0 +1,65 @@
+create Method named "shiftRows" input variable stringArrayOfBits 
+	
+	create empty String Array named "output"
+	
+	append index 0 of stringArrayOfBits to output
+	append index 1 of stringArrayOfBits to output
+	append index 3 of stringArrayOfBits to output
+	append index 2 of stringArrayOfBits to output
+	
+	return output
+end Method
+
+
+
+create Method named "multiplication" input variables nibbleA and nibbleB
+	
+	create empty String named "output"
+	create empty String variables "hexadecimalA" and "hexadecimalB"
+	create empty String variables "tabelPlaceA" and "tabelPlaceB"
+	
+	create 2D array named "multiplicationLookupTable" (16*16 table 0-9,A-F)
+	
+	hexadecimalA = hexadecimalConverstion(nibbleA)
+	hexadecimalB = hexadecimalConverstion(nibbleB)
+	
+	Switch statment to change hexadecimalA and B into the correct index value of the character
+	
+	output = binaryConverstion(multiplicationLookupTable at possiton tabelPlaceA and tabelPlaceB)
+	
+	return output
+end Method
+
+
+
+create Method named "mixColumns" input variable stringArrayOfBits 
+
+	create empty String Array named "output"
+	
+	create empty String Array named "column1"
+	create empty String Array named "column2"
+	
+	create String Array named "CONSTANT_NIBBLES" = {"0011","0010","0010","0011"}
+	
+	//First column
+	
+	column1 append addition( multiplication(CONSTANT_NIBBLES[0], stringArrayOfBits[0]), multiplication(CONSTANT_NIBBLES[1], stringArrayOfBits[2] )
+	column1 append addition( multiplication(CONSTANT_NIBBLES[2], stringArrayOfBits[0]), multiplication(CONSTANT_NIBBLES[3], stringArrayOfBits[2] )
+	
+	//Second column
+	
+	column2 append addition( multiplication(CONSTANT_NIBBLES[0], stringArrayOfBits[1]), multiplication(CONSTANT_NIBBLES[1], stringArrayOfBits[3] )
+	column2 append addition( multiplication(CONSTANT_NIBBLES[2], stringArrayOfBits[1]), multiplication(CONSTANT_NIBBLES[3], stringArrayOfBits[3] )
+	
+	//Final
+	
+	output append column1[0]
+	output append column2[0]
+	output append column1[1]
+	output append column2[1]
+
+	return output
+end Method
+	
+	
+	
